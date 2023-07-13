@@ -21,7 +21,7 @@ var _is_attacking: bool = false
 
 #Aqui temos a primeira função a ser executada no objeto, chamando ela uma única vez, utilizando a _state_machine
 func _ready() -> void:
-	#A partir deste playback podemos viajar no playmode pelas animações de idle e walk
+	#A partir deste playback podemos viajar no playmode pelas animações
 	_state_machine = _animation_tree["parameters/playback"]
 
 #Chamada de atualização constante da cena (permite jogar "em tempo real")
