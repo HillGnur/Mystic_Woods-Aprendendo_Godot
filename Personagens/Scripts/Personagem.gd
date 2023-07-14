@@ -21,6 +21,8 @@ var _is_attacking: bool = false
 
 #Aqui temos a primeira função a ser executada no objeto, chamando ela uma única vez, utilizando a _state_machine
 func _ready() -> void:
+	#Caso ao mexer com as animações, esqueçamos o AnimationTree desabilitado, por segurança, o habilitamos via código
+	_animation_tree.active = true
 	#A partir deste playback podemos viajar no playmode pelas animações
 	_state_machine = _animation_tree["parameters/playback"]
 
@@ -94,3 +96,7 @@ func _on_timer_ataque_timeout():
 	#Retornar as variáveis para os valores originais
 	_is_attacking = false
 	set_physics_process(true)
+
+func _on_area_ataque_body_entered(_body):
+	if _body.is_in_group("enemy") or _body.is_in_group("breakable"):
+		_body.update_health(randi_range(1,5))
