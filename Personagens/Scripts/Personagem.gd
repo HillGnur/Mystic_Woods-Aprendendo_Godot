@@ -97,6 +97,8 @@ func _on_timer_ataque_timeout():
 	_is_attacking = false
 	set_physics_process(true)
 
+#Caso um corpo entre na hitbox, ele sofrerá dano de 1-5 de forma randômica
 func _on_area_ataque_body_entered(_body):
+	#Verificação do tipo de objeto/corpo
 	if _body.is_in_group("enemy") or _body.is_in_group("breakable"):
 		_body.update_health(randi_range(1,5))

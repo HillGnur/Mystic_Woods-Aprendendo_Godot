@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnbmqfxbnetxg" path="res://Personagens/Assets/personagem.png" id="2_a6wcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxxpx"]
-size = Vector2(13, 2)
+size = Vector2(12.5, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6h4y"]
 size = Vector2(10.75, 13)
@@ -931,6 +931,8 @@ disabled = true
 position = Vector2(-1, -14.5)
 shape = SubResource("RectangleShape2D_tcsw8")
 disabled = true
+
+[node name="Visão" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="TimerAtaque" to="." method="_on_timer_ataque_timeout"]
 [connection signal="body_entered" from="AreaAtaque" to="." method="_on_area_ataque_body_entered"]

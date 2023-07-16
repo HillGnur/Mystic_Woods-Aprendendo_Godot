@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp3oa1nt5p4fa"]
+
+[ext_resource type="Texture2D" uid="uid://y67kdi4gbdoq" path="res://Terreno/Assets/objects.png" id="1_68s4a"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cytsl"]
+resource_name = "terreno_objetos"
+texture = ExtResource("1_68s4a")
+0:5/size_in_atlas = Vector2i(3, 4)
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, 18)
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.25, 8, 0.125, 12.25, 5.875, 11.875, 11, 9.875, 14.75, -7.5, 14.75, -12.25, 10.75, -12.25, 4)
+6:7/size_in_atlas = Vector2i(2, 2)
+6:7/0 = 0
+6:7/0/texture_origin = Vector2i(0, 6)
+6:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:7/0/physics_layer_0/angular_velocity = 0.0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(15.2787, -1.98425, 17.4614, 4.36535, 10.9134, 9.32598, -11.5087, 9.52441, -16.6677, 5.95275, -16.0724, 0.198425)
+8:6/size_in_atlas = Vector2i(2, 3)
+8:6/0 = 0
+8:6/0/texture_origin = Vector2i(0, 20)
+8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:6/0/physics_layer_0/angular_velocity = 0.0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.73477, -8, 6.31385, -8, 6.31385, 0.982155, -6.59447, 1.12246)
+10:7/size_in_atlas = Vector2i(2, 2)
+10:7/0 = 0
+10:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:7/0/physics_layer_0/angular_velocity = 0.0
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(10.9134, -2.77795, 13.2945, 3.57165, 9.52441, 10.3181, -7.54016, 10.5165, -13.0961, 4.76221, -12.6992, -2.77795, -4.36535, -8, 4.36535, -8)
+10:0/size_in_atlas = Vector2i(2, 1)
+10:0/0 = 0
+10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:0/0/physics_layer_0/angular_velocity = 0.0
+11:2/size_in_atlas = Vector2i(1, 2)
+11:2/0 = 0
+11:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:2/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_jgffp"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_cytsl")
+
+[node name="terreno_objetos" type="TileMap"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_jgffp")
+format = 2
+layer_0/y_sort_enabled = true
