@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+#Nome de classe do personagem
+class_name Personagem
+
 #Criamos a variável mas não a inicializamos
 var _state_machine
 var _is_attacking: bool = false
