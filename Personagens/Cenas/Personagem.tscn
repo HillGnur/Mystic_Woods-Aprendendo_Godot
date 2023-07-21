@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cj7vqkuundn74"]
+[gd_scene load_steps=42 format=3 uid="uid://cj7vqkuundn74"]
 
 [ext_resource type="Script" path="res://Personagens/Scripts/Personagem.gd" id="1_0raly"]
 [ext_resource type="Texture2D" uid="uid://bnbmqfxbnetxg" path="res://Personagens/Assets/personagem.png" id="2_a6wcn"]
@@ -467,6 +467,21 @@ tracks/5/keys = {
 "values": [Vector2(-1, -14.5)]
 }
 
+[sub_resource type="Animation" id="Animation_anb3t"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [54, 55, 56]
+}
+
 [sub_resource type="Animation" id="Animation_0kv4m"]
 resource_name = "idle_down"
 length = 0.6
@@ -802,6 +817,7 @@ _data = {
 "attack_left": SubResource("Animation_ss6jm"),
 "attack_right": SubResource("Animation_mcfrd"),
 "attack_up": SubResource("Animation_v8bvx"),
+"death": SubResource("Animation_anb3t"),
 "idle_down": SubResource("Animation_0kv4m"),
 "idle_left": SubResource("Animation_pd0vw"),
 "idle_right": SubResource("Animation_fh4j4"),
@@ -833,6 +849,29 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_8bosr")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_e3a67")
 blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_buvso"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpafb"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_867j8"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2tse2"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qwjh8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_buvso")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_rpafb")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_867j8")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2tse2")
+blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lx7xv"]
@@ -884,12 +923,14 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rwg6j"]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_2yj4r")
 states/attack/position = Vector2(380, 228)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_qwjh8")
+states/death/position = Vector2(384, 309)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_sww3l")
 states/idle/position = Vector2(380, 55)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_itvum")
 states/walk/position = Vector2(380, 145)
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree")]
+[node name="Personagem" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree") groups=["personagem"]]
 script = ExtResource("1_0raly")
 _attack_timer = NodePath("TimerAtaque")
 _animation_tree = NodePath("AnimationTree")
@@ -913,6 +954,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_rwg6j")
 anim_player = NodePath("../Animação")
 parameters/attack/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(0, 0.0027101)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0.176, -0.239905)
 

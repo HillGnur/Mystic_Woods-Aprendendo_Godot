@@ -9,3 +9,10 @@
 - [X] Novos objetos, e árvores com YSort adicionados
 - [X] Câmera fixada no personagem
 - [X] Mapa aumentado
+- [X] Instanciação de mais slimes
+- [X] Adição da lógica de morte 
+- [X] Adição da lógica de perseguição
+- [X] Export executável para Windows
+
+
+### Finalizado

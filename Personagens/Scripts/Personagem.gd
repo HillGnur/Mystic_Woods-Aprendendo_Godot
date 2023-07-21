@@ -4,13 +4,14 @@ extends CharacterBody2D
 class_name Personagem
 
 #Criamos a variável mas não a inicializamos
+var _is_dead: bool = false
 var _state_machine
 var _is_attacking: bool = false
 
 @export_category("Variables")
 #Export das variáveis para uso de velocidade
 #Nesse caso, o personagem irá se movimentar aproximadamente 5 células por segundo
-@export var _movespeed: float = 80.0
+@export var _velocity: float = 80.0
 #Aqui temos a aceleração e fricção, quanto mais próximo de 1, mais forte é o fator, quanto mais longe, menor
 @export var _acceleration: float = 0.4 #Quanto menor, mais demorará para acelerar
 @export var _friction: float = 0.8 #Quanto menor, mais demorará para parar
@@ -31,6 +32,9 @@ func _ready() -> void:
 
 #Chamada de atualização constante da cena (permite jogar "em tempo real")
 func _physics_process(delta: float) -> void:
+	#Caso o player morra, a animação de morte é chamada e o physics process deixa de rodar
+	if _is_dead:
+		return
 	_move()
 	_attack()
 	_animate()
@@ -57,18 +61,18 @@ func _move() -> void:
 		
 		#Interpolação para aplicar uma aceleração
 		#lerp() é uma interpolação linear, onde a velocidade atual para a direção multiplicada pela mvspd
-		velocity.x = lerp(velocity.x, (_direction.normalized().x * _movespeed), _acceleration)
-		velocity.y = lerp(velocity.y, (_direction.normalized().y * _movespeed), _acceleration)
+		velocity.x = lerp(velocity.x, (_direction.normalized().x * _velocity), _acceleration)
+		velocity.y = lerp(velocity.y, (_direction.normalized().y * _velocity), _acceleration)
 		return
 		
 	#Caso o if não seja cumprido (movimentação = zero), o bloco abaixo seguirá normalmente
 	#Interpolação para aplicar uma fricção
-	velocity.x = lerp(velocity.x, (_direction.normalized().x * _movespeed), _friction)
-	velocity.y = lerp(velocity.y, (_direction.normalized().y * _movespeed), _friction)
+	velocity.x = lerp(velocity.x, (_direction.normalized().x * _velocity), _friction)
+	velocity.y = lerp(velocity.y, (_direction.normalized().y * _velocity), _friction)
 	
 	#Velocity é uma palavra reservada
 	#A direção deve ser normalizada e multiplicada pela velocidade, define a taxa de quadros de movimentação
-	velocity = (_direction.normalized() * _movespeed)
+	velocity = (_direction.normalized() * _velocity)
 
 #Função de ataque
 func _attack() -> void:
@@ -104,4 +108,10 @@ func _on_timer_ataque_timeout():
 func _on_area_ataque_body_entered(_body):
 	#Verificação do tipo de objeto/corpo
 	if _body.is_in_group("enemy") or _body.is_in_group("breakable"):
-		_body.update_health(randi_range(1,5))
+		_body.update_health()
+
+func die() -> void:
+	_state_machine.travel("death")
+	_is_dead = true
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()

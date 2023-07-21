@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dork866xk1nhi"]
+[gd_scene load_steps=7 format=3 uid="uid://dork866xk1nhi"]
 
 [ext_resource type="PackedScene" uid="uid://qe8mh8ostxr6" path="res://Terreno/Cenas/terreno.tscn" id="1_rx7j0"]
 [ext_resource type="PackedScene" uid="uid://cj7vqkuundn74" path="res://Personagens/Cenas/Personagem.tscn" id="2_0lpsm"]
 [ext_resource type="PackedScene" uid="uid://nfhvpo37dufr" path="res://Terreno/Cenas/interior_casa.tscn" id="2_b6as7"]
 [ext_resource type="PackedScene" uid="uid://dp3oa1nt5p4fa" path="res://Terreno/Cenas/objetos.tscn" id="3_c8whe"]
 [ext_resource type="PackedScene" uid="uid://cb1uy1nqbn1am" path="res://Componentes/Cenas/componente_porta.tscn" id="5_v5afj"]
+[ext_resource type="PackedScene" uid="uid://c6sfxjhyepbld" path="res://Personagens/Cenas/Gosma.tscn" id="6_7t7ds"]
 
 [node name="Nível" type="Node2D"]
 position = Vector2(168, -40)
@@ -41,9 +42,27 @@ _teleport_position = Vector2(452, -40)
 z_index = 1
 y_sort_enabled = true
 
-[node name="CharacterBody2D" parent="Ysort_objetos" instance=ExtResource("2_0lpsm")]
+[node name="Personagem" parent="Ysort_objetos" instance=ExtResource("2_0lpsm")]
 position = Vector2(192, 108)
 
 [node name="Objetos" parent="Ysort_objetos" instance=ExtResource("3_c8whe")]
 position = Vector2(1, 1)
 layer_0/tile_data = PackedInt32Array(196604, 0, 5, -327659, 0, 5, 720924, 0, 5, 851986, 524288, 6, 851988, 524288, 6, 851990, 524288, 6, -458763, 524288, 6, -786434, 524288, 6, -786410, 524288, 6, -851936, 524288, 6, -720889, 524288, 6, -851954, 524288, 6, -720879, 393216, 7, -589831, 393216, 7, 1376246, 393216, 7, 1376285, 393216, 7, 852000, 393216, 7, 1376258, 524288, 6, 1245193, 524288, 6, 1376276, 524288, 6, 327687, 655360, 7, -65511, 655360, 7, 917512, 0, 5, 393220, 0, 1, 262134, 0, 1, 393249, 0, 1, 1441788, 0, 1, -720885, 0, 1, -786444, 0, 1, 1048564, 0, 1, 393227, 655360, 0, 393225, 327680, 0, 393229, 0, 0, -1179593, 720896, 2, -1114057, 327680, 0, -1179596, 655360, 0, -1179598, 327680, 0)
+
+[node name="Slime" parent="Ysort_objetos" instance=ExtResource("6_7t7ds")]
+position = Vector2(32, 144)
+
+[node name="Slime2" parent="Ysort_objetos" instance=ExtResource("6_7t7ds")]
+position = Vector2(104, -80)
+
+[node name="Slime3" parent="Ysort_objetos" instance=ExtResource("6_7t7ds")]
+position = Vector2(360, 16)
+
+[node name="Slime4" parent="Ysort_objetos" instance=ExtResource("6_7t7ds")]
+position = Vector2(264, 184)
+
+[node name="Slime5" parent="Ysort_objetos" instance=ExtResource("6_7t7ds")]
+position = Vector2(-64, -40)
+
+[node name="Slime6" parent="Ysort_objetos" instance=ExtResource("6_7t7ds")]
+position = Vector2(456, 288)
